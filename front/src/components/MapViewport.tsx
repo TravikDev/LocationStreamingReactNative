@@ -13,12 +13,15 @@ export const MapViewport = ({socket}: any) => {
   const [latitude, setLatitude] = useState(0);
   const [longitude, setLongitude] = useState(0);
 
-  useMemo(() => {
-    setLatitude(location?.coords?.latitude || 47.0);
-    setLongitude(location?.coords?.longitude || 28.0);
-  }, [location]);
+  // useMemo(() => {
+  //   setLatitude(location?.coords?.latitude || 47.0);
+  //   setLongitude(location?.coords?.longitude || 28.0);
+  // }, [location]);
 
   useEffect(() => {
+    setLatitude(location?.coords?.latitude || 47.0);
+    setLongitude(location?.coords?.longitude || 28.0);
+
     socket.emit('update-location', {
       latitude,
       longitude,
